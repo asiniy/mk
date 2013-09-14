@@ -7,14 +7,22 @@ html
     = javascript_include_tag :application
     = yield(:head)
   body
-    #container
-      - flash.each do |name, msg|
-        = content_tag :div, msg, id: "flash_#{name}" if msg.is_a?(String)
-      p= link_to 'Home', root_path
-      - if user_signed_in?
-        #user_login_box style="float:right"
-          = current_user.email
-      div style="clear:both"
-      - if show_title?
-        h1= h yield(:title)
-      = yield
+    .navbar.navbar-fixed-top
+      .navbar-inner
+        .container
+          .row
+            .span8 = link_to 'Портальчик', root_path, class: 'brand'
+            .span4
+              ul.nav
+                li.divider-vertical
+                - if signed_in?
+                  li.navbar-text = current_user.name
+                  li.divider-vertical
+                  li = link_to 'Выйти', destroy_user_session_path, method: :delete
+                - else
+                  li = link_to 'Войти', new_user_session_path
+                  li.divider-vertical
+                  li = link_to 'Регистрация', new_user_registration_path
+                li.divider-vertical
+    .container
+      .row = yield

@@ -1,0 +1,11 @@
+/*
+ *= require twitter-bootstrap-static/bootstrap
+ *= require_self
+ *= require_tree .
+ */
+
+body {
+  margin: 0;
+  padding: 0;
+  padding-top: 60px;
+}
