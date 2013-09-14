@@ -1,0 +1,19 @@
+ru:
+  errors:
+    messages:
+      not_saved: Не сохранено
+  activerecord:
+    errors:
+      messages:
+        blank: не может быть пустым
+      models:
+        user:
+          attributes:
+            password:
+              too_short: слишком короткий (6-128 символов)
+    attributes:
+      user:
+        name: Имя
+        email: Email
+        password: Пароль
+        password_confirmation: Подтверждение пароля
