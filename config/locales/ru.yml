@@ -1,11 +1,9 @@
 ru:
-  errors:
-    messages:
-      not_saved: Не сохранено
   activerecord:
     errors:
       messages:
         blank: не может быть пустым
+        taken: с таким значением уже существует
       models:
         user:
           attributes:

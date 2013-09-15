@@ -11,6 +11,7 @@ gem 'pg'
 gem 'devise', '3.0.0'
 gem 'devise-encryptable'
 gem 'devise-i18n-views'
+gem 'russian'
 
 gem 'heroku'
 gem 'thin'
