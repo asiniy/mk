@@ -1,4 +1,5 @@
 /*
+ *= require jquery.pnotify.default
  *= require twitter-bootstrap-static/bootstrap
  *= require_self
  *= require_tree .
@@ -8,4 +9,22 @@ body {
   margin: 0;
   padding: 0;
   padding-top: 60px;
+}
+
+// override bootstrap
+select, textarea, input[type="text"], input[type="password"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"] {
+    border-radius: 4px 4px 4px 4px;
+    color: #555555;
+    display: inline-block;
+    font-size: 14px;
+    height: 30px;
+    line-height: 20px;
+    margin-bottom: 10px;
+    padding: 4px 6px;
+    vertical-align: middle;
+}
+
+// Pnotify messages
+.flash_error, .flash_notice, .flash_success, .flash_info, .flash_alert {
+  display: none;
 }

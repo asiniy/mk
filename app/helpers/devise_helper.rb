@@ -3,13 +3,11 @@ module DeviseHelper
     return "" if resource.errors.empty?
 
     messages = resource.errors.full_messages.map { |msg| content_tag(:li, msg) }.join
-    sentence = I18n.t("errors.messages.not_saved",
-                      :count => resource.errors.count,
-                      :resource => resource.class.model_name.human.downcase)
+    sentence = I18n.t("errors.messages.not_saved", count: resource.errors.count)
 
     html = <<-HTML
     <div id="error_explanation">
-      <h4>#{sentence}</h4>
+      <h4 class="label label-important">#{sentence}</h4>
       <ul>#{messages}</ul>
     </div>
     HTML

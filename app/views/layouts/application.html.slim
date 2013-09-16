@@ -1,4 +1,4 @@
-doctype Strict
+doctype
 html
   head
     title= h(yield(:title) || "Devise")
@@ -7,6 +7,8 @@ html
     = javascript_include_tag :application
     = yield(:head)
   body
+    = flash_messages
+
     .navbar.navbar-fixed-top
       .navbar-inner
         .container
