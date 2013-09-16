@@ -8,3 +8,4 @@
 
 * Pnotify
 * seeds.rb
+* Красивые даты в I18n

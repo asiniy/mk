@@ -1,9 +1,5 @@
-/*
- *= require jquery.pnotify.default
- *= require twitter-bootstrap-static/bootstrap
- *= require_self
- *= require_tree .
- */
+@import "jquery.pnotify.default.css";
+@import "twitter-bootstrap-static/bootstrap.css";
 
 body {
   margin: 0;

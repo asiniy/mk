@@ -8,10 +8,11 @@ gem 'rails', '4.0.0'
 gem 'pg'
 
 # Use Devise for user authentication
-gem 'devise', '3.0.0'
+gem 'devise', '3.0.2'
 gem 'devise-encryptable'
 gem 'devise-i18n-views'
 gem 'russian'
+gem 'activeadmin', github: 'gregbell/active_admin', branch: 'rails4'
 
 gem 'heroku'
 gem 'thin'
