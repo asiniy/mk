@@ -18,7 +18,7 @@ html
               ul.nav
                 li.divider-vertical
                 - if signed_in?
-                  - if signed_in_as_admin?
+                  - if admin_signed_in?
                     li = link_to 'Админпанель', admin_root_path
                     li.divider-vertical
                   li.navbar-text = current_user.name

@@ -9,7 +9,7 @@ ru:
         user:
           attributes:
             password:
-              too_short: слишком короткий (6-128 символов)
+              too_short: слишком короткий (надо 6-128 символов)
     models:
       category:
         one: Категория
@@ -23,3 +23,7 @@ ru:
         password_confirmation: Подтверждение пароля
       category:
         title: Название
+      post:
+        heading: Заголовок
+        short_description: Краткое описание
+        body: Содержимое

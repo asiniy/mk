@@ -14,8 +14,14 @@ gem 'devise-i18n-views'
 gem 'russian'
 gem 'activeadmin', github: 'gregbell/active_admin', branch: 'rails4'
 
+# Server part
 gem 'heroku'
 gem 'thin'
+
+# Post content
+gem 'redactor-rails'
+gem 'carrierwave'
+gem 'mini_magick'
 
 gem 'slim-rails'
 

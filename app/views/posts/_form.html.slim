@@ -1,0 +1,14 @@
+= form_for @post do |f|
+  = render_errors errors_for(@post)
+
+  .field
+    = f.label :heading
+    = f.text_field :heading, style: 'width:400px;'
+  .field
+    = f.label :short_description
+    = f.text_field :short_description, style: 'width:400px;'
+  .field
+    = f.label :body
+    = f.text_area :body, class: 'redactor'
+  br
+  .actions = f.submit 'Сохранить', class: 'btn btn-success'

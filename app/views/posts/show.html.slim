@@ -1,0 +1,21 @@
+p#notice = notice
+
+p
+  strong Heading:
+  = @post.heading
+p
+  strong Short description:
+  = @post.short_description
+p
+  strong Body:
+  = @post.body
+p
+  strong Published:
+  = @post.published
+p
+  strong User:
+  = @post.user_id
+
+= link_to 'Edit', edit_post_path(@post)
+'|
+= link_to 'Back', posts_path
