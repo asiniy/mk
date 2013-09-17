@@ -1,6 +1,7 @@
 ru:
   activerecord:
     errors:
+      not_admin: Вы должны быть зарегистрированы как администратор для выполнения этого действия
       messages:
         blank: не может быть пустым
         taken: с таким значением уже существует
@@ -9,9 +10,16 @@ ru:
           attributes:
             password:
               too_short: слишком короткий (6-128 символов)
+    models:
+      category:
+        one: Категория
+        few: Категории
+        other: Категории
     attributes:
       user:
         name: Имя
         email: Email
         password: Пароль
         password_confirmation: Подтверждение пароля
+      category:
+        title: Название

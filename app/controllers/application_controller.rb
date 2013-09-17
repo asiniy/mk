@@ -15,4 +15,7 @@ class ApplicationController < ActionController::Base
     current_user.try(:admin?)
   end
 
+  def only_admin!
+    redirect_to(root_path, error: I18n.t('activerecord.errors.not_admin')) unless signed_in_as_admin?
+  end
 end

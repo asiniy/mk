@@ -13,11 +13,14 @@ html
       .navbar-inner
         .container
           .row
-            .span8 = link_to 'Портальчик добрых сил', root_path, class: 'brand'
-            .span4
+            .span7 = link_to 'Портальчик добрых сил', root_path, class: 'brand'
+            .span5
               ul.nav
                 li.divider-vertical
                 - if signed_in?
+                  - if signed_in_as_admin?
+                    li = link_to 'Админпанель', admin_root_path
+                    li.divider-vertical
                   li.navbar-text = current_user.name
                   li.divider-vertical
                   li = link_to 'Выйти', destroy_user_session_path, method: :delete
