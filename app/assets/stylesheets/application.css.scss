@@ -21,6 +21,17 @@ select, textarea, input[type="text"], input[type="password"], input[type="dateti
     vertical-align: middle;
 }
 
+.post_category_input {
+  input {
+    margin-top: -3px;
+  }
+
+  label {
+    margin: 0px 10px;
+    display: inline;
+  }
+}
+
 // Pnotify messages
 .flash_error, .flash_notice, .flash_success, .flash_info, .flash_alert {
   display: none;

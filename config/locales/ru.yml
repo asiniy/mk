@@ -10,6 +10,11 @@ ru:
           attributes:
             password:
               too_short: слишком короткий (надо 6-128 символов)
+        post:
+          attributes:
+            categories:
+              blank: пусты, вы должны указать хотя бы одну
+
     models:
       category:
         one: Категория
@@ -28,3 +33,4 @@ ru:
         short_description: Краткое описание
         body: Содержимое
         published: Опубиковано
+        categories: Категории

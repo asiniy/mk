@@ -4,7 +4,7 @@ class PostsController < InheritedResources::Base
   respond_to :html
 
   def index
-    @posts = Post.all.published
+    @posts = Post.published
   end
 
   def show
@@ -19,6 +19,6 @@ class PostsController < InheritedResources::Base
 
   protected
   def post_params
-    params.require(:post).permit(:heading, :short_description, :body)
+    params.require(:post).permit(:heading, :short_description, :body, {category_ids: []})
   end
 end
