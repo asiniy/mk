@@ -1,4 +1,6 @@
 class Post < ActiveRecord::Base
+  scope :published, -> { where(published: true) }
+
   validates :heading,
     presence: true
 

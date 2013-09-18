@@ -1,21 +1,13 @@
-p#notice = notice
-
 p
-  strong Heading:
-  = @post.heading
-p
-  strong Short description:
-  = @post.short_description
+  strong = @post.heading
+  i опубликовал
+  - if admin_signed_in?
+    = link_to root_path
+  - else
+    span = @post.user.name
 p
   strong Body:
-  = @post.body
-p
-  strong Published:
-  = @post.published
+  = @post.body.html_safe
 p
   strong User:
   = @post.user_id
-
-= link_to 'Edit', edit_post_path(@post)
-'|
-= link_to 'Back', posts_path

@@ -1,6 +1,8 @@
-= form_tag(posts_path) do
+= form_tag(root_path, method: 'get', id: 'posts_fetching') do
   h4 Подобрать статью
-  zz zz
+  - Category.all.each do |category|
+    = label_tag :category_id, category.title
+    = check_box_tag :category_ids, category.id, [*params[:category_ids]].include?(category.id.to_s), name: 'category_ids[]'
 
 table
   tr
@@ -20,10 +22,4 @@ table
       td = post.body
       td = post.published
       td = post.user_id
-      td = link_to 'Show', post
-      td = link_to 'Edit', edit_post_path(post)
-      td = link_to 'Destroy', post, :confirm => 'Are you sure?', :method => :delete
-
-br
-
-= link_to 'New Post', new_post_path
+      td = link_to 'Показать', post
