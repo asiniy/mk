@@ -9,4 +9,6 @@ class User < ActiveRecord::Base
   before_validation -> {
     self.admin = true if User.count == 0
   }
+
+  has_many :posts
 end
