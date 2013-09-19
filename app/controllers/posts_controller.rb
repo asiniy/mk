@@ -4,7 +4,8 @@ class PostsController < InheritedResources::Base
   respond_to :html
 
   def index
-    @posts = Post.published
+    params[:category_ids] ||= Category.pluck(:id)
+    @posts = Post.published.joins(:categories_posts).where('"categories_posts"."category_id" in (?)', params[:category_ids])
   end
 
   def show

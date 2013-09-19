@@ -16,7 +16,7 @@ $(document).ready(
     "path":"/assets/redactor-rails",
     "css":"style.css",
     minHeight: 200,
-    buttons: ['html', '|', 'formatting', '|', 'bold', 'italic', 'deleted', '|'],
+    buttons: ['html', '|', 'formatting', '|', 'bold', 'italic', 'deleted', '|', 'video', 'image'],
     formattingTags: ['h3', 'p']
   })
 })

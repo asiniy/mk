@@ -1,0 +1,26 @@
+// Posts categories check_boxes
+// Form
+.post_category_input {
+  input {
+    margin-top: -3px;
+  }
+
+  label {
+    margin: 0px 10px;
+    display: inline;
+  }
+}
+
+// posts#index
+.post_category_select {
+  margin: 5px;
+
+  input {
+    margin-top: -3px;
+  }
+
+  label {
+    margin: 0px 10px;
+    display: inline;
+  }
+}

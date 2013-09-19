@@ -1,8 +1,9 @@
 = form_tag(root_path, method: 'get', id: 'posts_fetching') do
   h4 Подобрать статью
-  - Category.all.each do |category|
-    = label_tag :category_id, category.title
-    = check_box_tag :category_ids, category.id, [*params[:category_ids]].include?(category.id.to_s), name: 'category_ids[]'
+  - categories_list.each do |category|
+    span.post_category_select.label
+      = check_box_tag :category_ids, category.id, [*params[:category_ids]].include?(category.id.to_s), name: 'category_ids[]'
+      = label_tag :category_id, category.title
 
 table
   tr
