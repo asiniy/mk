@@ -20,6 +20,10 @@ ru:
         one: Категория
         few: Категории
         other: Категории
+      post:
+        one: Статья
+        few: Статьи
+        other: Статьи
     attributes:
       user:
         name: Имя
