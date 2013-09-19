@@ -13,7 +13,7 @@
   .field
     = f.label :category, 'Выберите категорию'
     - categories_list.each do |category|
-      p.post_category_input
+      label.checkbox
         = check_box_tag "post_category_#{category.id}", category.id, [*params.try(:[], :post).try(:[], :category_ids)].include?(category.id.to_s), name: 'post[category_ids][]'
         = label_tag "post_category_#{category.id}", category.title, name: 'post[category_ids][]'
   br

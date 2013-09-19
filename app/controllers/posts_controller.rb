@@ -5,7 +5,12 @@ class PostsController < InheritedResources::Base
 
   def index
     params[:category_ids] ||= Category.pluck(:id)
-    @posts = Post.published.joins(:categories_posts).where('"categories_posts"."category_id" in (?)', params[:category_ids])
+
+    @posts = Post
+      .published
+      .uniq
+      .joins('INNER JOIN "categories_posts" ON "posts"."id" = "categories_posts"."post_id"')
+      .where('"categories_posts"."category_id" in (?)', params[:category_ids])
   end
 
   def show

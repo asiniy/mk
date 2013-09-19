@@ -2,25 +2,12 @@
   h4 Подобрать статью
   - categories_list.each do |category|
     span.post_category_select.label
-      = check_box_tag :category_ids, category.id, [*params[:category_ids]].include?(category.id.to_s), name: 'category_ids[]'
+      = check_box_tag :category_ids, category.id, [*params[:category_ids].map(&:to_s)].include?(category.id.to_s), name: 'category_ids[]'
       = label_tag :category_id, category.title
 
-table
-  tr
-    th Heading
-    th Short description
-    th Body
-    th Published
-    th User
-    th
-    th
-    th
-
-  - @posts.each do |post|
-    tr
-      td = post.heading
-      td = post.short_description
-      td = post.body
-      td = post.published
-      td = post.user_id
-      td = link_to 'Показать', post
+  ul.thumbnails
+    - @posts.each do |post|
+      li.span4
+        .thumbnail
+          h3 = post.heading
+          p = post.short_description
