@@ -19,11 +19,23 @@ ru:
       category:
         one: Категория
         few: Категории
+        many: Статьи
         other: Категории
+      comment:
+        one: Комментарий админа
+        few: Комментарии админа
+        many: Комментарии админа
+        other: Комментарии админа
       post:
         one: Статья
         few: Статьи
+        many: Статьи
         other: Статьи
+      user:
+        one: Пользователь
+        few: Пользователи
+        many: Пользователи
+        other: Пользователи
     attributes:
       user:
         name: Имя
@@ -38,3 +50,4 @@ ru:
         body: Содержимое
         published: Опубиковано
         categories: Категории
+        user: Пользователь

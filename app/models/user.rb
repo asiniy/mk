@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
   validates :name,
     presence: true
 
-  before_validation -> {
+  before_save -> {
     self.admin = true if User.count == 0
   }
 

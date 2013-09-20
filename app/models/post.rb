@@ -1,6 +1,7 @@
 class Post < ActiveRecord::Base
   scope :published, -> { where(published: true) }
-  scope :unpublished, -> { where(published: false) }
+  scope :declined, -> { where(published: false) }
+  scope :unchecked, -> { where(published: nil) }
 
   belongs_to :user
   has_and_belongs_to_many :categories
@@ -15,9 +16,6 @@ class Post < ActiveRecord::Base
   validates :body,
     presence: true
 
-  validates :published,
-    inclusion: [true, false]
-
   validates :user_id,
     presence: true
 
@@ -25,6 +23,6 @@ class Post < ActiveRecord::Base
     has_categories: true
 
   after_save -> {
-    PostPublishedWorker.perform_async(id) if published && !changed_attributes['published']
+    PostPublishedStatusWorker.perform_async(id, published) if [true, false].include?(published)
   }
 end

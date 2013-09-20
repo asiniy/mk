@@ -4,7 +4,7 @@ class CreatePosts < ActiveRecord::Migration
       t.string :heading, null: false
       t.string :short_description, null: false
       t.text :body, null: false
-      t.boolean :published, null: false, default: false
+      t.boolean :published
       t.integer :user_id, null: false
 
       t.timestamps

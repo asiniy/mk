@@ -19,7 +19,7 @@ class PostsController < InheritedResources::Base
 
   def create
     @post = current_user.posts.new(post_params)
-    @post.published = admin_signed_in?
+    @post.published = true if admin_signed_in?
     @post.save ? redirect_to(@post) : render(:new)
   end
 

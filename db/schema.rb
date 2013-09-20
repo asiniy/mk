@@ -43,11 +43,11 @@ ActiveRecord::Schema.define(version: 20130918144421) do
   add_index "categories_posts", ["category_id", "post_id"], name: "index_categories_posts_on_category_id_and_post_id", unique: true, using: :btree
 
   create_table "posts", force: true do |t|
-    t.string   "heading",                           null: false
-    t.string   "short_description",                 null: false
-    t.text     "body",                              null: false
-    t.boolean  "published",         default: false, null: false
-    t.integer  "user_id",                           null: false
+    t.string   "heading",           null: false
+    t.string   "short_description", null: false
+    t.text     "body",              null: false
+    t.boolean  "published"
+    t.integer  "user_id",           null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -1,5 +1,7 @@
 ActiveAdmin.register Post do
-  scope 'Неопубликованные', :unpublished
+  scope 'Отклонённые', :declined
+  scope 'Опубликованные', :published
+  scope 'Непроверенные', :unchecked
 
   index do
     column :heading
