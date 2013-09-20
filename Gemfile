@@ -22,6 +22,7 @@ gem 'thin'
 gem 'redactor-rails'
 gem 'carrierwave'
 gem 'mini_magick'
+gem 'sidekiq'
 
 gem 'slim-rails'
 
