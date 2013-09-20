@@ -1,13 +1,25 @@
 = form_tag(root_path, method: 'get', id: 'posts_fetching') do
-  h4 Подобрать статью
-  - categories_list.each do |category|
-    span.post_category_select.label
-      = check_box_tag :category_ids, category.id, [*params[:category_ids].map(&:to_s)].include?(category.id.to_s), name: 'category_ids[]'
-      = label_tag :category_id, category.title
-
+  h3 Выберите категорию
+  ul.thumbnails
+    - categories_list.each do |category|
+      li.thumbnail
+        .caption
+          label.checkbox
+            = check_box_tag :category_ids, category.id, [*params[:category_ids].map(&:to_s)].include?(category.id.to_s), name: 'category_ids[]'
+            = label_tag :category_id, category.title
+    .pull-right
+      li.thumbnail
+        .caption
+          - if user_signed_in?
+            = link_to 'Добавить статью', new_post_path, class: 'btn btn-success'
+          - else
+            | Только пользователь может добавлять статьи
+  h2 Статьи
   ul.thumbnails
     - @posts.each do |post|
       li.span4
         .thumbnail
-          h3 = post.heading
-          p = post.short_description
+          .caption
+            h3 = link_to post.heading, post
+            p = post.short_description
+  .posts_pagination = will_paginate(@posts)

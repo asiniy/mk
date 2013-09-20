@@ -12,6 +12,10 @@ def create_category(title)
   Category.where(title: title).first_or_create!
 end
 
+def create_post(title, content)
+
+end
+
 create_user(name: 'Александр Антонов', email: 'kaburbundokel11g@inbox.ru', password: 'secret', admin: true)
 create_user(name: 'Михаил Кечинов', email: 'sam@mkechinov.ru', password: 'secret', admin: true)
 create_user(name: 'Антон Жаворонков', email: 'anton@mkechinov.ru', password: 'secret', admin: true)

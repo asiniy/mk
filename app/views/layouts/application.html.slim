@@ -15,19 +15,29 @@ html
           .row
             .span7 = link_to 'Портальчик добрых сил', root_path, class: 'brand'
             .span5
-              ul.nav
-                li.divider-vertical
-                - if signed_in?
-                  - if admin_signed_in?
-                    li = link_to 'Админпанель', admin_root_path
+              .pull-right
+                ul.nav
+                  li.divider-vertical
+                  - if signed_in?
+                    - if admin_signed_in?
+                      li = link_to 'Админпанель', admin_root_path, 'data-no-turbolink' => true
+                      li.divider-vertical
+                    li.navbar-text = current_user.name
                     li.divider-vertical
-                  li.navbar-text = current_user.name
+                    li = link_to 'Выйти', destroy_user_session_path, method: :delete
+                  - else
+                    li = link_to 'Войти', new_user_session_path
+                    li.divider-vertical
+                    li = link_to 'Регистрация', new_user_registration_path
                   li.divider-vertical
-                  li = link_to 'Выйти', destroy_user_session_path, method: :delete
-                - else
-                  li = link_to 'Войти', new_user_session_path
-                  li.divider-vertical
-                  li = link_to 'Регистрация', new_user_registration_path
-                li.divider-vertical
     .container
       .row = yield
+
+    .navbar-bottom.navbar-inverse
+      .navbar-inner
+        .container
+          .pull-right
+            p.navbar-text © 2013. Портальчик добрых сил
+            p.navbar-text
+              ' Разработка -
+              = link_to 'Студия веб-разработок М. Кечинова', 'http://mkechinov.ru'

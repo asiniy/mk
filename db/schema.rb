@@ -11,10 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130918144421) do
-
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
+ActiveRecord::Schema.define(version: 20130920183515) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -43,14 +40,31 @@ ActiveRecord::Schema.define(version: 20130918144421) do
   add_index "categories_posts", ["category_id", "post_id"], name: "index_categories_posts_on_category_id_and_post_id", unique: true, using: :btree
 
   create_table "posts", force: true do |t|
-    t.string   "heading",           null: false
-    t.string   "short_description", null: false
-    t.text     "body",              null: false
-    t.boolean  "published"
-    t.integer  "user_id",           null: false
+    t.string   "heading",                           null: false
+    t.string   "short_description",                 null: false
+    t.text     "body",                              null: false
+    t.boolean  "published",         default: false, null: false
+    t.integer  "user_id",                           null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "redactor_assets", force: true do |t|
+    t.integer  "user_id"
+    t.string   "data_file_name",               null: false
+    t.string   "data_content_type"
+    t.integer  "data_file_size"
+    t.integer  "assetable_id"
+    t.string   "assetable_type",    limit: 30
+    t.string   "type",              limit: 30
+    t.integer  "width"
+    t.integer  "height"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "redactor_assets", ["assetable_type", "assetable_id"], name: "idx_redactor_assetable", using: :btree
+  add_index "redactor_assets", ["assetable_type", "type", "assetable_id"], name: "idx_redactor_assetable_type", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "",    null: false

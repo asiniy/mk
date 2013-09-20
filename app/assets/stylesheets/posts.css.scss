@@ -1,14 +1,11 @@
-// Posts categories check_boxes
-// posts#index
-.post_category_select {
-  margin: 5px;
+.posts_pagination {
+  font-size: 24px;
+  text-align: center;
+  padding: 50px 0px 40px;
 
-  input {
-    margin-top: -3px;
-  }
-
-  label {
-    margin: 0px 10px;
-    display: inline;
+  a {
+    padding: 5px;
+    border: 1px solid gray;
+    text-decoration: none;
   }
 }

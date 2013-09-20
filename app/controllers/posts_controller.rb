@@ -11,6 +11,8 @@ class PostsController < InheritedResources::Base
       .uniq
       .joins('INNER JOIN "categories_posts" ON "posts"."id" = "categories_posts"."post_id"')
       .where('"categories_posts"."category_id" in (?)', params[:category_ids])
+      .order('"posts"."created_at" DESC')
+      .paginate(page: params[:page], per_page: 12)
   end
 
   def show

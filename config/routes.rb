@@ -4,4 +4,5 @@ DeviseExample::Application.routes.draw do
 
   devise_for :users
   ActiveAdmin.routes(self)
+  mount RedactorRails::Engine => '/redactor_rails'
 end

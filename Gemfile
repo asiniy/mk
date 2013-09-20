@@ -25,6 +25,7 @@ gem 'mini_magick'
 gem 'sidekiq'
 
 gem 'slim-rails'
+gem 'will_paginate'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'

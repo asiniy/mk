@@ -51,3 +51,7 @@ ru:
         published: Опубиковано
         categories: Категории
         user: Пользователь
+  will_paginate:
+    previous_label: "← Предыдущая"
+    next_label: "Следующая →"
+    page_gap: "…"

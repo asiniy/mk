@@ -1,13 +1,17 @@
+h1 = @post.heading
+
 p
-  strong = @post.heading
-  i опубликовал
+  i' опубликовал
   - if admin_signed_in?
-    = link_to root_path
+    span = link_to @post.user.name, admin_user_path(@post.user)
   - else
     span = @post.user.name
+
 p
-  strong Body:
-  = @post.body.html_safe
-p
-  strong User:
-  = @post.user_id
+  ' Категории:
+  - @post.categories.each_with_index do |category, index|
+    = link_to category.title, root_path("category_ids[]" => category.id)
+    = ", " unless index == @post.categories.size - 1
+
+
+= @post.body.html_safe

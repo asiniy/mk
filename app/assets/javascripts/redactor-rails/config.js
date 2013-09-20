@@ -1,4 +1,4 @@
-$(document).ready(
+$(document).on('page:load',
   function(){
   var csrf_token = $('meta[name=csrf-token]').attr('content')
   var csrf_param = $('meta[name=csrf-param]').attr('content')
