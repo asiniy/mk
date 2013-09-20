@@ -17,10 +17,6 @@ create_user(name: 'Михаил Кечинов', email: 'sam@mkechinov.ru', pass
 create_user(name: 'Антон Жаворонков', email: 'anton@mkechinov.ru', password: 'secret', admin: true)
 create_user(name: 'Anonymous', email: 'anonymous@anonymous.ru', password: 'secret', admin: false)
 
-puts User.pluck(:admin).inspect
-
-User.destroy_all
-
 create_category('Политика')
 create_category('Спорт')
 create_category('Культура')

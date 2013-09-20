@@ -19,7 +19,7 @@ ActiveAdmin.register Post do
     f.inputs "Редактировать статью" do
       f.input :heading
       f.input :short_description
-      f.input :published
+      f.input :published, as: :select
     end
     f.inputs "Содержимое" do
       f.input :body, input_html: { class: 'redactor' }

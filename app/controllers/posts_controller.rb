@@ -14,7 +14,7 @@ class PostsController < InheritedResources::Base
   end
 
   def show
-    @post = Post.published.find(params[:id])
+    @post = Post.find(params[:id])
   end
 
   def create

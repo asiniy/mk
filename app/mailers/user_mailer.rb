@@ -8,6 +8,6 @@ class UserMailer < ActionMailer::Base
 
   def post_declined(post_id)
     @post = Post.find(post_id)
-    mail_to: @post.user.email, subject: "Ваша статья отклонена!"
+    mail to: @post.user.email, subject: "Ваша статья отклонена!"
   end
 end
