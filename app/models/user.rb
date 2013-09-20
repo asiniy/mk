@@ -3,6 +3,8 @@ class User < ActiveRecord::Base
          :recoverable, :trackable, :validatable,
          :token_authenticatable, :lockable
 
+  scope :registered_today, -> { where('"users"."created_at" > ?', Time.zone.now.beginning_of_day) }
+
   validates :name,
     presence: true
 
