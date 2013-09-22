@@ -22,7 +22,7 @@ html
                     - if admin_signed_in?
                       li = link_to 'Админпанель', admin_root_path, 'data-no-turbolink' => true
                       li.divider-vertical
-                    li.navbar-text = current_user.name
+                    li = link_to current_user.name, profile_path
                     li.divider-vertical
                     li = link_to 'Выйти', destroy_user_session_path, method: :delete
                   - else
