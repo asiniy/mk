@@ -24,6 +24,9 @@ gem 'carrierwave'
 gem 'mini_magick'
 gem 'sidekiq'
 
+# Comments
+gem 'awesome_nested_set'
+
 gem 'slim-rails'
 gem 'will_paginate'
 
