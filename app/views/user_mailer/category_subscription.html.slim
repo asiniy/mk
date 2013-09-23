@@ -1,0 +1,17 @@
+h1 = "Доброго времени суток, #{user.name}"
+
+p
+  - if @categories.length == 1
+    | В категории
+    = link_to root_path('category_ids[]' => @categories.first.id)
+    | на которую вы подписаны, появилась новая статья:
+    = link_to @post.heading, post_url(@post)
+  - else
+    | В категориях
+    = link_to root_path('category_ids[]' => @categories.pluck(:id))
+    | на которые вы подписаны, появилась новая статья:
+    = link_to post.heading, post_url
+
+p
+  | С уважением,
+  =link_to 'портальчик добрых сил', root_url

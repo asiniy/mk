@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20130921165159) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
     t.text     "body"
@@ -47,11 +50,11 @@ ActiveRecord::Schema.define(version: 20130921165159) do
   add_index "categories_users", ["category_id", "user_id"], name: "index_categories_users_on_category_id_and_user_id", unique: true, using: :btree
 
   create_table "posts", force: true do |t|
-    t.string   "heading",                           null: false
-    t.string   "short_description",                 null: false
-    t.text     "body",                              null: false
-    t.boolean  "published",         default: false, null: false
-    t.integer  "user_id",                           null: false
+    t.string   "heading",           null: false
+    t.string   "short_description", null: false
+    t.text     "body",              null: false
+    t.boolean  "published"
+    t.integer  "user_id",           null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

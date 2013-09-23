@@ -23,6 +23,9 @@ class Post < ActiveRecord::Base
     has_categories: true
 
   after_save -> {
-    PostPublishedStatusWorker.perform_async(id, published) if [true, false].include?(published)
+    if [true, false].include?(published)
+      PostPublishedStatusWorker.perform_async(id, published) # sending email if post published/declined
+      CategorySubscriptionWorker.perform_async(id) if published # sending email for category subscriptions
+    end
   }
 end
