@@ -1,3 +1,7 @@
+- if admin_signed_in?
+  - content_for :admin_post_buttons do
+    = link_to 'Удалить статью', post_path(@post), method: :delete, class: 'btn btn-danger', style: "margin-right:10px;", confirm: 'Вы уверены?'
+
 h1 = @post.heading
 
 p

@@ -31,3 +31,7 @@ select, textarea, input[type="text"], input[type="password"], input[type="dateti
 .flash_error, .flash_notice, .flash_success, .flash_info, .flash_alert {
   display: none;
 }
+
+.top-margin {
+  margin-top: 40px !important;
+}

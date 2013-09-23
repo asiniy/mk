@@ -7,13 +7,6 @@
           label.checkbox
             = check_box_tag :category_ids, category.id, [*params[:category_ids].map(&:to_s)].include?(category.id.to_s), name: 'category_ids[]'
             = label_tag :category_id, category.title
-    .pull-right
-      li.thumbnail
-        .caption
-          - if user_signed_in?
-            = link_to 'Добавить статью', new_post_path, class: 'btn btn-success'
-          - else
-            | Только пользователь может добавлять статьи
   h2 Статьи
   ul.thumbnails
     - @posts.each do |post|

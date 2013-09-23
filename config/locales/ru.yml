@@ -14,14 +14,13 @@ ru:
           attributes:
             categories:
               blank: пусты, вы должны указать хотя бы одну
-
     models:
       category:
         one: Категория
         few: Категории
         many: Статьи
         other: Категории
-      comment:
+      active_admin_comment:
         one: Комментарий админа
         few: Комментарии админа
         many: Комментарии админа
@@ -36,6 +35,11 @@ ru:
         few: Пользователи
         many: Пользователи
         other: Пользователи
+      comment:
+        one: Комментарий
+        few: Комментарии
+        many: Комментарии
+        other: Комментарии
     attributes:
       user:
         name: Имя
@@ -51,7 +55,13 @@ ru:
         published: Опубиковано
         categories: Категории
         user: Пользователь
+      comment:
+        title: Заголовок
+        raw_content: Содержимое
   will_paginate:
     previous_label: "← Предыдущая"
     next_label: "Следующая →"
     page_gap: "…"
+  the_comments:
+    guest_name: Гость
+    reply: Ответить

@@ -99,7 +99,7 @@ ActiveAdmin.setup do |config|
   # config.show_comments_in_menu = false
   #
   # You can change the name under which comments are registered:
-  # config.comments_registration_name = 'AdminComment'
+  config.comments_registration_name = 'ActiveAdminComment'
 
 
   # == Batch Actions
@@ -205,20 +205,33 @@ ActiveAdmin.setup do |config|
 
 end
 
-  module ActiveAdmin
-    module Views
-      class TableFor
-        def bool_column(attribute)
-          column(attribute) do |model|
-            if model[attribute] == true
-              '&#x2714;'.html_safe
-            elsif model[attribute] == false
-              '✖'.html_safe
-            else
-              '&#x2717;'.html_safe
-            end
+module ActiveAdmin
+  module Views
+    class TableFor
+      def bool_column(attribute)
+        column(attribute) do |model|
+          if model[attribute] == true
+            '&#x2714;'.html_safe
+          elsif model[attribute] == false
+            '✖'.html_safe
+          else
+            '&#x2717;'.html_safe
+          end
+        end
+      end
+    end
+    class AttributesTable
+      def bool_row(attribute)
+        row(attribute) do |model|
+          if model[attribute] == true
+            '&#x2714;'.html_safe
+          elsif model[attribute] == false
+            '✖'.html_safe
+          else
+            '&#x2717;'.html_safe
           end
         end
       end
     end
   end
+end

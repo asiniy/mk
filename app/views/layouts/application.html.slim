@@ -1,7 +1,7 @@
 doctype
 html
   head
-    title= h(yield(:title) || "Devise")
+    title = "Портальчик добрых сил"
     = csrf_meta_tag
     = stylesheet_link_tag "application", media: "all"
     = javascript_include_tag :application
@@ -13,10 +13,13 @@ html
       .navbar-inner
         .container
           .row
-            .span7 = link_to 'Портальчик добрых сил', root_path, class: 'brand'
-            .span5
+            .span3 = link_to 'Портальчик добрых сил', root_path, class: 'brand'
+            .span4
               .pull-right
-                ul.nav
+                = yield :admin_post_buttons
+                = link_to 'Добавить статью', new_post_path, class: 'btn btn-success' if user_signed_in?
+            .span5
+                ul.nav.pull-right
                   li.divider-vertical
                   - if signed_in?
                     - if admin_signed_in?
@@ -33,7 +36,7 @@ html
     .container
       .row = yield
 
-    .navbar-bottom.navbar-inverse
+    .navbar-bottom.navbar-inverse.top-margin
       .navbar-inner
         .container
           .pull-right

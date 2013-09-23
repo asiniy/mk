@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  include TheCommentsUser
+
   devise :database_authenticatable, :registerable,
          :recoverable, :trackable, :validatable,
          :token_authenticatable, :lockable
@@ -14,4 +16,9 @@ class User < ActiveRecord::Base
   before_save -> {
     self.admin = true if User.count == 0
   }
+
+  # TheComments methods
+  def comment_moderator? comment
+    admin?
+  end
 end
