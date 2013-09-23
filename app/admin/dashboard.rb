@@ -18,7 +18,7 @@ ActiveAdmin.register_page "Dashboard" do
       column do
         panel "Статьи (всего #{link_to Post.count, admin_posts_path})".html_safe do
           ul do
-            Post.order('created_at DESC').last(10).each do |post|
+            Post.order('created_at DESC').first(10).each do |post|
               li link_to post.heading, admin_post_path(post)
             end
           end

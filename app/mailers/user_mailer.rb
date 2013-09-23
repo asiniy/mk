@@ -15,6 +15,6 @@ class UserMailer < ActionMailer::Base
     @user = User.find(user_id)
     @post = Post.find(post_id)
     @categories = Category.find(category_ids)
-    mail to: @user.email, subject: "Опубликована новая статья \"#{@post.heading}\" в #{Russian.p(@categories, 'категории', 'категориях')} #{@categories.join(', ')}"
+    mail to: @user.email, subject: "Опубликована новая статья \"#{@post.heading}\" в #{Russian.p(@categories.length, 'категории', 'категориях', 'категориях')} #{@categories.join(', ')}"
   end
 end

@@ -209,7 +209,15 @@ end
     module Views
       class TableFor
         def bool_column(attribute)
-          column(attribute){ |model| model[attribute] ? '&#x2714;'.html_safe : '&#x2717;'.html_safe }
+          column(attribute) do |model|
+            if model[attribute] == true
+              '&#x2714;'.html_safe
+            elsif model[attribute] == false
+              '✖'.html_safe
+            else
+              '&#x2717;'.html_safe
+            end
+          end
         end
       end
     end
