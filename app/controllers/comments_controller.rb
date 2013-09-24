@@ -4,11 +4,10 @@ class CommentsController < InheritedResources::Base
 
   def create
     if user_signed_in?
-      params[:comment][:author_name] = nil
-      params[:comment][:user_id] = current_user.id
+      @comment = current_user.comments.create(comment_params)
+    else
+      @comment = Comment.create(comment_params)
     end
-
-    @comment = Comment.new(comment_params)
   end
 
   protected

@@ -1,0 +1,32 @@
+h4.comment_here {
+  cursor: pointer;
+  color: #0088CC;
+  border-bottom: 1px dotted #0088CC;
+  display: inline-block;
+}
+
+.comment {
+  .comment_place {
+    border-radius: 5px;
+    padding: 5px;
+
+    .comment_div {
+      border-left: 5px solid #ccc;
+      padding-left: 10px;
+    }
+
+    p.comment_here span {
+      cursor: pointer;
+      color: #0088CC;
+      border-bottom: 1px dotted #0088CC;
+    }
+  }
+
+  .new_comment {
+    margin-left: 10px;
+  }
+}
+
+.comment .comment {
+  margin-left: 30px;
+}

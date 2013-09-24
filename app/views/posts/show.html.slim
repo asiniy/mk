@@ -17,5 +17,10 @@ p
     = link_to category.title, root_path("category_ids[]" => category.id)
     = ", " unless index == @post.categories.size - 1
 
+hr
 
 = @post.body.html_safe
+
+hr
+
+= render partial: 'comments/tree'

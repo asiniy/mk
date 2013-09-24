@@ -56,8 +56,8 @@ ru:
         categories: Категории
         user: Пользователь
       comment:
-        title: Заголовок
-        raw_content: Содержимое
+        author_name: Ваше имя
+        content: Содержимое
   will_paginate:
     previous_label: "← Предыдущая"
     next_label: "Следующая →"
