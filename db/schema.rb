@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130920183515) do
+ActiveRecord::Schema.define(version: 20130923173123) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -38,6 +38,25 @@ ActiveRecord::Schema.define(version: 20130920183515) do
   end
 
   add_index "categories_posts", ["category_id", "post_id"], name: "index_categories_posts_on_category_id_and_post_id", unique: true, using: :btree
+
+  create_table "categories_users", force: true do |t|
+    t.integer "category_id", null: false
+    t.integer "user_id",     null: false
+  end
+
+  add_index "categories_users", ["category_id", "user_id"], name: "index_categories_users_on_category_id_and_user_id", unique: true, using: :btree
+
+  create_table "comments", force: true do |t|
+    t.text     "content",     null: false
+    t.integer  "user_id"
+    t.string   "author_name"
+    t.integer  "post_id"
+    t.integer  "lft"
+    t.integer  "rgt"
+    t.integer  "parent_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "posts", force: true do |t|
     t.string   "heading",           null: false
