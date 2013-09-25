@@ -11,6 +11,9 @@
     = f.label :body
     = f.text_area :body, class: 'redactor'
   .field
+    = f.label :tag_list, 'Введите тэги через запятую'
+    = f.text_field :tag_list
+  .field
     = f.label :category, 'Выберите категорию'
     - categories_list.each do |category|
       label.checkbox

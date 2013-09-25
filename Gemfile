@@ -23,6 +23,7 @@ gem 'redactor-rails'
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'sidekiq'
+gem 'acts-as-taggable-on'
 
 # Thinking sphinx
 gem 'mysql2', '0.3.13'

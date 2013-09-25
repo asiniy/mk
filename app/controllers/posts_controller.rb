@@ -13,7 +13,10 @@ class PostsController < InheritedResources::Base
       .joins('INNER JOIN "categories_posts" ON "posts"."id" = "categories_posts"."post_id"')
       .where('"categories_posts"."category_id" in (?)', params[:category_ids])
       .order('"posts"."created_at" DESC')
-      .paginate(page: params[:page], per_page: 12)
+
+    @posts = @posts.tagged_with(params[:tag_names]) if params[:tag_names].present?
+
+    @posts = @posts.paginate(page: params[:page], per_page: 12)
   end
 
   def show
@@ -32,6 +35,6 @@ class PostsController < InheritedResources::Base
 
   protected
   def post_params
-    params.require(:post).permit(:heading, :short_description, :body, {category_ids: []})
+    params.require(:post).permit(:heading, :short_description, :body, :tag_list, {category_ids: []})
   end
 end

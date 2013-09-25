@@ -1,12 +1,20 @@
 = form_tag(root_path, method: 'get', id: 'posts_fetching') do
-  h3 Выберите категорию
+  h4 Выберите категорию
   ul.thumbnails
     - categories_list.each do |category|
       li.thumbnail
         .caption
           label.checkbox
-            = check_box_tag :category_ids, category.id, [*params[:category_ids].map(&:to_s)].include?(category.id.to_s), name: 'category_ids[]'
-            = label_tag :category_id, category.title
+            = check_box_tag "category_ids_#{category.id}", category.id, [*params[:category_ids].map(&:to_s)].include?(category.id.to_s), name: 'category_ids[]'
+            = label_tag "category_ids_#{category.id}", category.title
+  h4 Выберите тэги
+  ul.thumbnails
+    - tags_list.each do |tag|
+      li.thumbnail
+        .caption
+          label.checkbox
+            = check_box_tag "tag_names_#{tag.id}", tag.name, [*params[:tag_names]].include?(tag.name), name: 'tag_names[]'
+            = label_tag "tag_names_#{tag.id}", tag.name
   h2 Статьи
   ul.thumbnails
     - @posts.each do |post|

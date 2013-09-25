@@ -35,6 +35,11 @@ ru:
         few: Пользователи
         many: Пользователи
         other: Пользователи
+      tag:
+        one: Тэг
+        few: Тэги
+        many: Тэги
+        other: Тэги
       comment:
         one: Комментарий
         few: Комментарии
@@ -55,6 +60,7 @@ ru:
         published: Опубиковано
         categories: Категории
         user: Пользователь
+        tags: Тэги
       comment:
         title: Заголовок
         raw_content: Содержимое

@@ -1,4 +1,6 @@
 class Post < ActiveRecord::Base
+  acts_as_taggable
+
   scope :published, -> { where(published: true) }
   scope :declined, -> { where(published: false) }
   scope :unchecked, -> { where(published: nil) }
