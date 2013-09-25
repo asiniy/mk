@@ -21,6 +21,9 @@ class PostsController < InheritedResources::Base
 
   def show
     @post = Post.find(params[:id])
+    @comments = Comment
+                  .where('"comments"."post_id" = ?', params[:id])
+                  .includes(:user)
   end
 
   def create

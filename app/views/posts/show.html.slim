@@ -24,3 +24,7 @@ p
     = ", " unless index == @post.tags.length - 1
 
 = @post.body.html_safe
+
+hr
+
+= render partial: 'comments/tree'

@@ -1,30 +1,19 @@
-= form_for @comment do |f|
-  - if @comment.errors.any?
-    #error_explanation
-      h2 = "#{pluralize(@comment.errors.count, "error")} prohibited this comment from being saved:"
-      ul
-        - @comment.errors.full_messages.each do |message|
-          li = message
+= form_for Comment.new, remote: true, format: :json do |f|
+  h4 Добавить комментарий
+  .errors
+
+  - unless user_signed_in?
+    .field
+      = f.label :author_name
+      = f.text_field :author_name
 
   .field
     = f.label :content
-    = f.text_area :content
-  .field
-    = f.label :user_id
-    = f.number_field :user_id
-  .field
-    = f.label :author_name
-    = f.text_field :author_name
-  .field
-    = f.label :post_id
-    = f.number_field :post_id
-  .field
-    = f.label :lft
-    = f.number_field :lft
-  .field
-    = f.label :rgt
-    = f.number_field :rgt
-  .field
-    = f.label :parent_id
-    = f.number_field :parent_id
-  .actions = f.submit 'Save'
+    = f.text_area :content, class: 'redactor'
+
+  = f.hidden_field :post_id, value: @post.id
+  = f.hidden_field :parent_id
+
+  br
+
+  .actions = f.submit 'Сохранить', class: %w(btn btn-success)

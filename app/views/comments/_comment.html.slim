@@ -1,0 +1,16 @@
+.comment
+  .comment_place
+    p
+      strong
+        - if comment.user_id.present?
+          - if admin_signed_in?
+            =' link_to comment.user.name, admin_user_path(comment.user_id)
+          -else
+            =' comment.user.name
+        - else
+          =' comment.author_name
+      i сказал:
+    .comment_div = comment.content.html_safe
+    p.comment_here data-parent_id="#{comment.id}"
+      span Ответить
+  = render partial: 'comments/comment', collection: comment.children
