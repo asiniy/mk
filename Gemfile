@@ -24,6 +24,10 @@ gem 'carrierwave'
 gem 'mini_magick'
 gem 'sidekiq'
 
+# Thinking sphinx
+gem 'mysql2', '0.3.13'
+gem 'thinking-sphinx', '~> 3.0.2'
+
 # Comments
 gem 'awesome_nested_set'
 
