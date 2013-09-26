@@ -13,7 +13,12 @@
 
 # Ignore all logfiles and tempfiles.
 /log/*.log
+/log/*.pid
 /tmp
 
 # Assets
 /public/system
+
+# Sphinx
+/db/sphinx/
+/config/development.sphinx.conf
