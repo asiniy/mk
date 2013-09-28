@@ -1,19 +1,28 @@
 ActiveAdmin.register Comment do
   index do
-    column :author_name do |comment|
-      comment.author_name.present? ? comment.author_name : link_to(comment.user.name, admin_comment_path(comment))
+    column 'Автор' do |comment|
+      comment.author_name.present? ? comment.author_name : link_to(comment.user.name, admin_user_path(comment.user))
     end
-    column :post, 'Статья' do |comment|
+    column 'Статья' do |comment|
       link_to comment.post.heading, admin_post_path(comment.post)
     end
     default_actions
   end
 
   show do
-    h2 link_to comment.post.heading, admin_comment_path(comment)
-    h5 comment.author_name.present? ? comment.author_name : link_to(comment.user.name, admin_comment_path(comment))
-    div I18n::l comment.created_at
-    div comment.content.html_safe
+    attributes_table do
+      row 'Статья' do |comment|
+        link_to comment.post.heading, admin_comment_path(comment)
+      end
+      row 'Автор' do |comment|
+        comment.author_name.present? ? comment.author_name : link_to(comment.user.name, admin_user_path(comment.user))
+      end
+      row :created_at
+      row 'Содержимое' do |comment|
+        comment.content.html_safe
+      end
+    end
+    active_admin_comments
   end
 
   filter :content

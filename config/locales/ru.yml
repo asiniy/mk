@@ -51,6 +51,7 @@ ru:
         email: Email
         password: Пароль
         password_confirmation: Подтверждение пароля
+        admin: Админ
       category:
         title: Название
       post:
@@ -61,9 +62,12 @@ ru:
         categories: Категории
         user: Пользователь
         tags: Тэги
+        created_at: Создана
+        updated_at: Обновлена
       comment:
         author_name: Ваше имя
         content: Содержимое
+        created_at: Создан
   will_paginate:
     previous_label: "← Предыдущая"
     next_label: "Следующая →"
