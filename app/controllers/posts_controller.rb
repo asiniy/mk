@@ -7,16 +7,27 @@ class PostsController < InheritedResources::Base
   def index
     params[:category_ids] ||= Category.pluck(:id)
 
+    if params[:search].present?
+      @posts = Post.search(params[:search])
+    else
+      @posts = Post
+        .published
+        .uniq
+
+    end
+
     @posts = Post
-      .published
-      .uniq
-      .joins('INNER JOIN "categories_posts" ON "posts"."id" = "categories_posts"."post_id"')
-      .where('"categories_posts"."category_id" in (?)', params[:category_ids])
-      .order('"posts"."created_at" DESC')
+      #.published
+      #.uniq
 
-    @posts = @posts.tagged_with(params[:tag_names]) if params[:tag_names].present?
+    @posts = @posts.search(params[:search], page: params[:page], per_page: 12)
+      #.joins('INNER JOIN "categories_posts" ON "posts"."id" = "categories_posts"."post_id"')
+      #.where('"categories_posts"."category_id" in (?)', params[:category_ids])
+      #.order('"posts"."created_at" DESC')
 
-    @posts = @posts.paginate(page: params[:page], per_page: 12)
+    #@posts = @posts.tagged_with(params[:tag_names]) if params[:tag_names].present?
+
+    #@posts = @posts.paginate(page: params[:page], per_page: 12)
   end
 
   def show
