@@ -24,10 +24,6 @@ gem 'mini_magick'
 gem 'sidekiq'
 gem 'acts-as-taggable-on'
 
-# Thinking sphinx
-gem 'mysql2', '0.3.13'
-gem 'thinking-sphinx', '~> 3.0.2'
-
 # Comments
 gem 'awesome_nested_set'
 
@@ -59,4 +55,7 @@ gem 'jbuilder', '~> 1.2'
 group :development do
   gem 'quiet_assets'
   gem 'thin'
+  # Thinking sphinx
+  gem 'mysql2', '0.3.13'
+  gem 'thinking-sphinx', '~> 3.0.2'
 end
