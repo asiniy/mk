@@ -13,6 +13,7 @@ class PostsController < InheritedResources::Base
       @posts = Post
         .published
         .uniq
+        .paginate(page: params[:page], per_page: 12)
 
     end
 
@@ -26,8 +27,6 @@ class PostsController < InheritedResources::Base
       #.order('"posts"."created_at" DESC')
 
     #@posts = @posts.tagged_with(params[:tag_names]) if params[:tag_names].present?
-
-    #@posts = @posts.paginate(page: params[:page], per_page: 12)
   end
 
   def show

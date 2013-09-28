@@ -16,7 +16,6 @@ gem 'activeadmin', github: 'gregbell/active_admin', branch: 'rails4', ref: '6c9e
 
 # Server part
 gem 'heroku'
-gem 'thin'
 
 # Post content
 gem 'redactor-rails'
@@ -59,4 +58,5 @@ gem 'jbuilder', '~> 1.2'
 
 group :development do
   gem 'quiet_assets'
+  gem 'thin'
 end
