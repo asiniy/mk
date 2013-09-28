@@ -12,7 +12,7 @@ gem 'devise', '3.0.2'
 gem 'devise-encryptable'
 gem 'devise-i18n-views'
 gem 'russian'
-gem 'activeadmin', github: 'gregbell/active_admin', branch: 'rails4'
+gem 'activeadmin', github: 'gregbell/active_admin', branch: 'rails4', ref: '6c9e22ab09229b0903942179060c10cf5e3289d8'
 
 # Server part
 gem 'heroku'
