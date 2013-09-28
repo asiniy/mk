@@ -4,13 +4,15 @@
       strong
         - if comment.user_id.present?
           - if admin_signed_in?
-            =' link_to comment.user.name, admin_user_path(comment.user_id)
+            =' link_to comment.user.name, admin_user_path(comment.user_id), 'data-no-turbolink' => true
           -else
             =' comment.user.name
         - else
           =' comment.author_name
       i сказал:
+      span.destroy_comment data-uri="#{comment_path(comment.id)}" ✖
     .comment_div = comment.content.html_safe
     p.comment_here data-parent_id="#{comment.id}"
       span Ответить
-  = render partial: 'comments/comment', collection: comment.children
+    .new_comment
+  .comments = render partial: 'comments/comment', collection: comment.children

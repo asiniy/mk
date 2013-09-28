@@ -21,6 +21,6 @@
       li.span4
         .thumbnail
           .caption
-            h3 = link_to post.heading, post
+            h3 = link_to post.heading, post, 'data-no-turbolink' => true
             p = post.short_description
   .posts_pagination = will_paginate(@posts)

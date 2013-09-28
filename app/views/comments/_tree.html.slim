@@ -1,7 +1,7 @@
 h3 Комментарии
 
 h4.comment_here style="display: none;" Ответить на пост
-.new_comment
+.new_comment = render partial: 'comments/form'
 
-= render partial: 'comments/form'
-= render partial: 'comments/comment', collection: @comments.roots.order('created_at DESC')
+#comment_example style="display:none;" = render partial: 'comments/comment', object: Comment.new(author_name: 'Example', content: 'Example')
+.comments = render partial: 'comments/comment', collection: @comments.roots.order('created_at DESC')

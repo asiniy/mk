@@ -1,6 +1,6 @@
 class CommentsController < InheritedResources::Base
-  actions :create
-  respond_to :json
+  actions :create, :destroy
+  before_filter :only_admin!, only: :destroy
 
   def create
     if user_signed_in?
@@ -8,6 +8,12 @@ class CommentsController < InheritedResources::Base
     else
       @comment = Comment.create(comment_params)
     end
+  end
+
+  def destroy
+    @comment = Comment.find(params[:id])
+    @comment.self_and_descendants.delete_all
+    render json: { success: true }
   end
 
   protected

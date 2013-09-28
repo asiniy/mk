@@ -1,5 +1,5 @@
 DeviseExample::Application.routes.draw do
-  resources :comments, only: [ :create ]
+  resources :comments, only: [ :create, :destroy ]
   resource :profile, only: [ :show, :update ]
   resources :posts, except: [ :index, :edit, :update, :destroy ]
   root 'posts#index'

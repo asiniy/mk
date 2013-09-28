@@ -1,4 +1,4 @@
-ready = ->
+redactorReady = ->
   if $('.redactor_box').length == 0
     csrf_token = $("meta[name=csrf-token]").attr("content")
     csrf_param = $("meta[name=csrf-param]").attr("content")
@@ -15,5 +15,5 @@ ready = ->
       buttons: ["html", "|", "formatting", "|", "bold", "italic", "deleted", "|", "video", "image"]
       formattingTags: ["h3", "p"]
 
-$(document).ready(ready)
-$(document).on('page:load', ready)
+$(document).ready(redactorReady)
+$(document).on('page:load', redactorReady)
