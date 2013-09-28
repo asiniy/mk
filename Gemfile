@@ -18,7 +18,7 @@ gem 'activeadmin', github: 'gregbell/active_admin', branch: 'rails4', ref: '6c9e
 gem 'heroku'
 
 # Post content
-gem 'redactor-rails'
+gem 'redactor-rails', '0.3.6'
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'sidekiq'

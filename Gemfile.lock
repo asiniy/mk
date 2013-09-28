@@ -160,7 +160,7 @@ GEM
       actionpack (>= 3.0)
       activerecord (>= 3.0)
       polyamorous (~> 0.6.0)
-    redactor-rails (0.4)
+    redactor-rails (0.3.6)
       devise
       mime-types
       orm_adapter
@@ -262,7 +262,7 @@ DEPENDENCIES
   pg
   quiet_assets
   rails (= 4.0.0)
-  redactor-rails
+  redactor-rails (= 0.3.6)
   russian
   sass-rails (~> 4.0.0)
   sidekiq
