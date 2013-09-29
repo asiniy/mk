@@ -7,26 +7,24 @@ class PostsController < InheritedResources::Base
   def index
     params[:category_ids] ||= Category.pluck(:id)
 
-    if params[:search].present?
-      @posts = Post.search(params[:search])
+    if params[:search].present? && Rails.env.development? && false
+      @posts = Post.search(params[:search], page: params[:page], per_page: 12)
     else
       @posts = Post
-        .published
-        .uniq
-        .paginate(page: params[:page], per_page: 12)
+                 .published
+                 .uniq
+                 .joins('INNER JOIN "categories_posts" ON "posts"."id" = "categories_posts"."post_id"')
+                 .where('"categories_posts"."category_id" in (?)', params[:category_ids])
+                 .order('"posts"."created_at" DESC')
 
+
+      @posts = @posts.where('"posts"."body" ILIKE ? OR "posts"."heading" ILIKE ? OR "posts"."short_description" ILIKE ?',
+        "%#{params[:search]}%", "%#{params[:search]}%", "%#{params[:search]}%") if params[:search].present?
+
+      @posts = @posts.tagged_with(params[:tag_names]) if params[:tag_names].present?
+
+      @posts = @posts.paginate(page: params[:page], per_page: 12)
     end
-
-    @posts = Post
-      #.published
-      #.uniq
-
-    @posts = @posts.search(params[:search], page: params[:page], per_page: 12)
-      #.joins('INNER JOIN "categories_posts" ON "posts"."id" = "categories_posts"."post_id"')
-      #.where('"categories_posts"."category_id" in (?)', params[:category_ids])
-      #.order('"posts"."created_at" DESC')
-
-    #@posts = @posts.tagged_with(params[:tag_names]) if params[:tag_names].present?
   end
 
   def show
