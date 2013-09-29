@@ -16,6 +16,7 @@ gem 'activeadmin', github: 'gregbell/active_admin', branch: 'rails4', ref: '6c9e
 
 # Server part
 gem 'heroku'
+gem 'thin'
 
 # Post content
 gem 'redactor-rails', '0.3.6'
@@ -54,7 +55,6 @@ gem 'jbuilder', '~> 1.2'
 
 group :development do
   gem 'quiet_assets'
-  gem 'thin'
   # Thinking sphinx
   gem 'mysql2', '0.3.13'
   gem 'thinking-sphinx', '~> 3.0.2'
