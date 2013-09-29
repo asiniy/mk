@@ -15,7 +15,10 @@
           label.checkbox
             = check_box_tag "tag_names_#{tag.id}", tag.name, [*params[:tag_names]].include?(tag.name), name: 'tag_names[]'
             = label_tag "tag_names_#{tag.id}", tag.name
-  = text_field_tag :search, params[:search], placeholder: 'Поисковый запрос'
+
+  .pull-left.post_search_field = text_field_tag :search, params[:search], placeholder: 'Поисковый запрос'
+  = button_tag 'Найти', class: %w(btn btn-success)
+
   h2 Статьи
   ul.thumbnails
     - @posts.each do |post|
