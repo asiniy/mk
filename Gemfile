@@ -24,6 +24,7 @@ gem 'figaro'
 # Post content
 gem 'redactor-rails', '0.3.6'
 gem 'carrierwave'
+gem 'fog'
 gem 'mini_magick'
 gem 'sidekiq'
 gem 'acts-as-taggable-on'
