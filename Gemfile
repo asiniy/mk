@@ -11,12 +11,15 @@ gem 'pg'
 gem 'devise', '3.0.2'
 gem 'devise-encryptable'
 gem 'devise-i18n-views'
+gem 'omniauth'
+gem 'omniauth-twitter'
+
 gem 'russian'
 gem 'activeadmin', github: 'gregbell/active_admin', branch: 'rails4', ref: '6c9e22ab09229b0903942179060c10cf5e3289d8'
 
 # Server part
 gem 'heroku'
-gem 'thin'
+gem 'figaro'
 
 # Post content
 gem 'redactor-rails', '0.3.6'
@@ -58,7 +61,9 @@ group :production do
 end
 
 group :development do
+  gem 'thin'
   gem 'quiet_assets'
+
   # Thinking sphinx
   gem 'mysql2', '0.3.13'
   gem 'thinking-sphinx', '~> 3.0.2'

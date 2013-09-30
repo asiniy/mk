@@ -4,7 +4,7 @@ DeviseExample::Application.routes.draw do
   resources :posts, except: [ :index, :edit, :update, :destroy ]
   root 'posts#index'
 
-  devise_for :users
+  devise_for :users, controllers: { omniauth_callbacks: "omniauth_callbacks" }
   ActiveAdmin.routes(self)
   mount RedactorRails::Engine => '/redactor_rails'
 end

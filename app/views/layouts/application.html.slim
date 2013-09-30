@@ -14,14 +14,17 @@ html
         .container
           .row
             .span3 = link_to 'Портальчик добрых сил', root_path, class: 'brand'
-            .span4
+            .span3
               .pull-right
                 = yield :admin_post_buttons
                 = link_to 'Добавить статью', new_post_path, class: 'btn btn-success' if user_signed_in?
-            .span5
+            .span6
                 ul.nav.pull-right
                   li.divider-vertical
                   - if signed_in?
+                    - if current_user.twitter_uid.blank?
+                      li = link_to(image_tag('twitter_64.png', style: 'width: 20px;'), omniauth_authorize_path(:user, :twitter))
+                      li.divider-vertical
                     - if admin_signed_in?
                       li = link_to 'Админпанель', admin_root_path, 'data-no-turbolink' => true
                       li.divider-vertical
@@ -29,6 +32,8 @@ html
                     li.divider-vertical
                     li = link_to 'Выйти', destroy_user_session_path, method: :delete
                   - else
+                    li = link_to(image_tag('twitter_64.png', style: 'width: 20px;'), omniauth_authorize_path(:user, :twitter))
+                    li.divider-vertical
                     li = link_to 'Войти', new_user_session_path
                     li.divider-vertical
                     li = link_to 'Регистрация', new_user_registration_path

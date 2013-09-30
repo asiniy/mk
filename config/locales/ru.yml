@@ -10,6 +10,8 @@ ru:
           attributes:
             password:
               too_short: слишком короткий (надо 6-128 символов)
+            email:
+              taken: занят. Возможно, вы уже зарегистрированы?
         post:
           attributes:
             categories:

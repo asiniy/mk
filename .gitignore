@@ -22,3 +22,6 @@
 # Sphinx
 /db/sphinx/
 /config/development.sphinx.conf
+
+# Ignore application configuration
+/config/application.yml

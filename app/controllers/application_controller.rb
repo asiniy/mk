@@ -7,6 +7,13 @@ class ApplicationController < ActionController::Base
 
   protected
 
+  before_filter -> { # omniauth
+    if user_signed_in?
+      current_user.update_attributes(session[:ohash]) if session[:ohash].present?
+      session[:ohash] = nil
+    end
+  }
+
   def configure_permitted_parameters
     devise_parameter_sanitizer.for(:sign_up) { |u| u.permit! }
   end
