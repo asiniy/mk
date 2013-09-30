@@ -10,4 +10,9 @@ class Comment < ActiveRecord::Base
 
   validates :content,
     presence: true
+
+  def content= value
+    value = ActionController::Base.helpers.sanitize(value, tags: %w[p h3 strong del em iframe img]) if value.is_a?(String)
+    super value
+  end
 end

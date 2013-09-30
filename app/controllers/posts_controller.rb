@@ -5,23 +5,39 @@ class PostsController < InheritedResources::Base
   respond_to :html
 
   def index
-    params[:category_ids] ||= Category.pluck(:id)
+    params[:category_ids] ||= Category.pluck(:id).map(&:to_s)
 
-    if params[:search].present? && Rails.env.development? && false
-      @posts = Post.search(params[:search], page: params[:page], per_page: 12)
+    if params[:search].present? && Rails.env.development?
+      options = {}
+
+      options[:category_ids] = params[:category_ids] if params[:category_ids].present?
+      options[:tag_ids] = params[:tag_ids] if params[:tag_ids].present?
+
+      @posts = Post.search(params[:search], excerpt_options: {limit: 100}, with: options, page: params[:page], per_page: 12)
+
+      @excerpter = ThinkingSphinx::Excerpter.new 'post_core', params[:search], {
+        :before_match    => '<span style="background:yellow">',
+        :after_match     => '</span>',
+        :chunk_separator => ' &#8230; ' # ellipsis
+      }
     else
       @posts = Post
                  .published
                  .uniq
-                 .joins('INNER JOIN "categories_posts" ON "posts"."id" = "categories_posts"."post_id"')
-                 .where('"categories_posts"."category_id" in (?)', params[:category_ids])
                  .order('"posts"."created_at" DESC')
 
+      @posts = @posts
+        .joins('INNER JOIN "categories_posts" ON "posts"."id" = "categories_posts"."post_id"')
+        .where('"categories_posts"."category_id" in (?)', params[:category_ids])
+
+      if params[:tag_ids].present?
+        @posts = @posts
+          .joins('INNER JOIN "taggings" ON "posts"."id" = "taggings"."taggable_id"')
+          .where('"taggings"."tag_id" IN (?)', params[:tag_ids])
+      end
 
       @posts = @posts.where('"posts"."body" ILIKE ? OR "posts"."heading" ILIKE ? OR "posts"."short_description" ILIKE ?',
         "%#{params[:search]}%", "%#{params[:search]}%", "%#{params[:search]}%") if params[:search].present?
-
-      @posts = @posts.tagged_with(params[:tag_names]) if params[:tag_names].present?
 
       @posts = @posts.paginate(page: params[:page], per_page: 12)
     end
