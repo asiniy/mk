@@ -5,7 +5,7 @@
       li.thumbnail
         .caption
           label.checkbox
-            = check_box_tag "category_ids_#{category.id}", category.id, [*params[:category_ids].map(&:to_s)].include?(category.id.to_s), name: 'category_ids[]'
+            = check_box_tag "category_ids_#{category.id}", category.id, params[:category_ids].include?(category.id.to_s), name: 'category_ids[]'
             = label_tag "category_ids_#{category.id}", category.title
   h4 Выберите тэги
   ul.thumbnails
@@ -13,18 +13,31 @@
       li.thumbnail
         .caption
           label.checkbox
-            = check_box_tag "tag_names_#{tag.id}", tag.name, [*params[:tag_names]].include?(tag.name), name: 'tag_names[]'
-            = label_tag "tag_names_#{tag.id}", tag.name
+            = check_box_tag "tag_ids_#{tag.id}", tag.id, [*params[:tag_ids]].include?(tag.id.to_s), name: 'tag_ids[]'
+            = label_tag "tag_ids_#{tag.id}", tag.name
 
   .pull-left.post_search_field = text_field_tag :search, params[:search], placeholder: 'Поисковый запрос'
   = button_tag 'Найти', class: %w(btn btn-success)
 
   h2 Статьи
   ul.thumbnails
-    - @posts.each do |post|
-      li.span4
-        .thumbnail
-          .caption
-            h3 = link_to post.heading, post, 'data-no-turbolink' => true
-            p = post.short_description
+    - if @posts.length > 0
+      - @posts.each do |post|
+        - if params[:search].present? && Rails.env.development?
+          li.span12
+            .thumbnail
+              .caption
+                h3 = link_to @excerpter.excerpt!(post.heading).html_safe, post, 'data-no-turbolink' => true
+                p = @excerpter.excerpt!(post.short_description).html_safe
+                p = @excerpter.excerpt!(sanitize(post.body, tags: [])).html_safe
+                p = link_to 'Подробнее', post, 'data-no-turbolink' => true
+        - else
+          li.span4
+            .thumbnail
+              .caption
+                h3 = link_to post.heading, post, 'data-no-turbolink' => true
+                p = post.short_description
+    - else
+      h2
+        center Таких статей нет. Измените параметры подбора
   .posts_pagination = will_paginate(@posts)

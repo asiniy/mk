@@ -17,11 +17,12 @@ p
     = link_to category.title, root_path("category_ids[]" => category.id)
     = ", " unless index == @post.categories.length - 1
 
-p
-  ' Тэги:
-  - @post.tags.each_with_index do |tag, index|
-    = link_to tag.name, root_path("tag_names[]" => tag.name)
-    = ", " unless index == @post.tags.length - 1
+- if @post.tags.any?
+  p
+    ' Тэги:
+    - @post.tags.each_with_index do |tag, index|
+      = link_to tag.name, root_path("tag_ids[]" => tag.id)
+      = ", " unless index == @post.tags.length - 1
 
 = @post.body.html_safe
 
