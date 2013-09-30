@@ -25,9 +25,14 @@ class Post < ActiveRecord::Base
     has_categories: true
 
   after_save -> {
-    if [true, false].include?(published)
+    if [true, false].include?(published) # work with that
       PostPublishedStatusWorker.perform_async(id, published) # sending email if post published/declined
       CategorySubscriptionWorker.perform_async(id) if published # sending email for category subscriptions
     end
   }
+
+  def body= value
+    value = ActionController::Base.helpers.sanitize(value, tags: %w[p h3 strong del em iframe img]) if value.is_a?(String)
+    super value
+  end
 end
