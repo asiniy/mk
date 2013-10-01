@@ -10,6 +10,6 @@ class ProfilesController < ApplicationController
 
   protected
   def profile_params
-    params.require(:user).permit(:email, {category_ids: []})
+    params.require(:user).permit({category_ids: []})
   end
 end

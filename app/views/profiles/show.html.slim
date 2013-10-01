@@ -3,9 +3,6 @@ h2 Мой профиль
 = form_for(current_user, as: :user, url: profile_path) do |f|
   = render_errors errors_for(current_user)
   .field
-    = f.label :email, 'Email *'
-    = f.text_field :email
-  .field
     h4 Мои подписки
     - categories_list.each do |category|
       label.checkbox
