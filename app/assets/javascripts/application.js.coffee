@@ -2,6 +2,11 @@
 //= require jquery_ujs
 //= require jquery.pnotify.min
 //= require twitter/bootstrap
-//= require redactor-rails
 //= require turbolinks
-//= require_tree .
+//= require redactor-rails
+//= require redactor-rails/config
+//= require bootstrap
+//= require comments
+//= require flash_messages
+//= require posts_fetching
+//= require preview

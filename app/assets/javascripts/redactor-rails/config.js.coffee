@@ -1,6 +1,5 @@
 redactorReady = ->
-  console.log($('.redactor_box').length)
-  if false
+  if $('.redactor_box').length == 0
     csrf_token = $("meta[name=csrf-token]").attr("content")
     csrf_param = $("meta[name=csrf-param]").attr("content")
     params = undefined
