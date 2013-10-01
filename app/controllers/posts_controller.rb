@@ -53,7 +53,16 @@ class PostsController < InheritedResources::Base
   def create
     @post = current_user.posts.new(post_params)
     @post.published = true if admin_signed_in?
-    @post.save ? redirect_to(@post) : render(:new)
+    if @post.save
+      if @post.published
+        flash[:success] = 'Ваша статья опубликована'
+      else
+        flash[:notice] = 'Ваша статья сохранена, ожидайте проверки модератора'
+      end
+      redirect_to @post
+    else
+      render :new
+    end
   end
 
   def destroy
