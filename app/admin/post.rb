@@ -40,7 +40,7 @@ ActiveAdmin.register Post do
       f.input :published, as: :select
     end
     f.inputs "Содержимое" do
-      f.input :body, input_html: { class: 'redactor' }
+      f.input :body, input_html: { class: 'redactorbox' }
     end
     f.inputs  do
       f.actions
