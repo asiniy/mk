@@ -2,16 +2,16 @@ h1 = "Доброго времени суток, #{@user.name}"
 
 p
   - if @categories.length == 1
-    | В категории
-    = link_to @categories.first.title, root_url('category_ids[]' => @categories.first.id)
-    | на которую вы подписаны, появилась новая статья:
+    ' В категории
+    '= link_to @categories.first.title, root_url('category_ids[]' => @categories.first.id)
+    ' на которую вы подписаны, появилась новая статья:
     = link_to @post.heading, post_url(@post)
   - else
-    | В категориях
-    = link_to @categories.map(&:title).join(', '), root_url('category_ids[]' => @categories.map(&:id))
-    | на которые вы подписаны, появилась новая статья:
+    ' В категориях
+    '= link_to @categories.map(&:title).join(', '), root_url('category_ids[]' => @categories.map(&:id))
+    ' на которые вы подписаны, появилась новая статья:
     = link_to @post.heading, post_url(@post)
 
 p
-  | С уважением,
+  ' С уважением,
   =link_to 'портальчик добрых сил', root_url
