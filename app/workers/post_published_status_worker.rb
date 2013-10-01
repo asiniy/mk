@@ -4,7 +4,7 @@ class PostPublishedStatusWorker
   def perform(post_id, published)
     if published
       UserMailer.post_published(post_id).deliver
-    else
+    elsif published == false
       UserMailer.post_declined(post_id).deliver
     end
   end
