@@ -8,7 +8,7 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
     if user_signed_in?
       current_user.update_attributes(ohash)
-      redirect_to profile_path
+      redirect_to profile_path, success: 'Вы успешно вошли!'
     else
       @user = User.find_by_twitter_uid_and_twitter_token(ohash[:twitter_uid], ohash[:twitter_token])
 
