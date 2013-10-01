@@ -27,6 +27,7 @@ $ ->
 
       # clone and change comment
       resultComment = $('#comment_example .comment').clone()
+      console.log(data['name'])
       resultComment.find('p strong').val(data['name'])
       resultComment.find('.comment_div').html($(data['content']))
       resultComment.find('.comment_here').remove()
