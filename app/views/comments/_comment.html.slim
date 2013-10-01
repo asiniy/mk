@@ -10,7 +10,8 @@
         - else
           =' comment.author_name
       i сказал:
-      span.destroy_comment data-uri="#{comment_path(comment.id)}" ✖
+      - if admin_signed_in?
+        span.destroy_comment data-uri="#{comment_path(comment.id)}" ✖
     .comment_div = comment.content.html_safe
     p.comment_here data-parent_id="#{comment.id}"
       span Ответить
