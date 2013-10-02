@@ -5,7 +5,7 @@ class ProfilesController < ApplicationController
 
   def update
     current_user.update_attributes(profile_params)
-    render :show
+    redirect_to profile_path
   end
 
   protected
