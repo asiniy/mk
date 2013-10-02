@@ -1,13 +1,13 @@
 h2 Мой профиль
 
-= form_for(current_user, as: :user, url: profile_path) do |f|
+= form_for(current_user, url: profile_path) do |f|
   = render_errors errors_for(current_user)
   .field
     h4 Мои подписки
     - categories_list.each do |category|
       label.checkbox
-        = check_box_tag "user_category_#{category.id}", category.id, current_user.category_ids.include?(category.id), name: 'user[category_ids][]'
-        = label_tag "user_category_#{category.id}", category.title, name: 'user[category_ids][]'
+        = check_box_tag "category_#{category.id}", category.id, current_user.category_ids.include?(category.id), name: 'category_ids[]'
+        = label_tag "category_#{category.id}", category.title, name: 'category_ids[]'
   .actions = f.submit 'Сохранить', class: %w(btn btn-success)
 
 h3 Ключница
