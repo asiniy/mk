@@ -13,9 +13,6 @@
 
 ActiveRecord::Schema.define(version: 20130929045945) do
 
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
     t.text     "body"
@@ -61,6 +58,9 @@ ActiveRecord::Schema.define(version: 20130929045945) do
     t.datetime "updated_at"
   end
 
+  add_index "comments", ["post_id"], name: "index_comments_on_post_id", using: :btree
+  add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
+
   create_table "posts", force: true do |t|
     t.string   "heading",           null: false
     t.string   "short_description", null: false
@@ -70,6 +70,8 @@ ActiveRecord::Schema.define(version: 20130929045945) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "posts", ["user_id"], name: "index_posts_on_user_id", using: :btree
 
   create_table "redactor_assets", force: true do |t|
     t.integer  "user_id"
