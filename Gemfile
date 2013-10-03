@@ -27,7 +27,7 @@ gem 'carrierwave'
 gem 'fog'
 gem 'mini_magick'
 gem 'sidekiq'
-gem 'sidekiq_mailer'
+gem 'sidekiq_mailer', git: 'git://github.com/tubaxenor/sidekiq_mailer.git', ref: 'cc8f6d0cf941d0a43cc694e6d2e20e25081e2d03'
 gem 'acts-as-taggable-on'
 
 # Comments
