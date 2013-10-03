@@ -224,6 +224,10 @@ GEM
       json
       redis (>= 3.0.4)
       redis-namespace (>= 1.3.1)
+    sidekiq_mailer (0.0.6)
+      actionmailer (>= 3.0)
+      activesupport (>= 3.0)
+      sidekiq (~> 2.3)
     slim (2.0.1)
       temple (~> 0.6.6)
       tilt (>= 1.3.3, < 2.1)
@@ -308,6 +312,7 @@ DEPENDENCIES
   russian
   sass-rails (~> 4.0.0)
   sidekiq
+  sidekiq_mailer
   slim-rails
   therubyracer
   thin

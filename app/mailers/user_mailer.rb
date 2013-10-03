@@ -1,4 +1,5 @@
 class UserMailer < ActionMailer::Base
+  include Sidekiq::Mailer
   default from: "no_reply@mkechinov.herokuapp.com"
 
   def post_published(post_id)

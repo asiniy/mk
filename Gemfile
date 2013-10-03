@@ -27,6 +27,7 @@ gem 'carrierwave'
 gem 'fog'
 gem 'mini_magick'
 gem 'sidekiq'
+gem 'sidekiq_mailer'
 gem 'acts-as-taggable-on'
 
 # Comments
