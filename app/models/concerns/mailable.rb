@@ -2,7 +2,7 @@ module Mailable
   extend ActiveSupport::Concern
 
   included do
-    after_commit -> {
+    after_save -> {
       if published_changed?
         if published
           UserMailer.post_published(id).deliver
