@@ -12,15 +12,21 @@ ActiveAdmin.register Post do
     default_actions
   end
 
-  show do
+  show do |post|
     attributes_table do
       row :heading
       row :short_description
-      row :body do |post|
+      row :body do
         post.body.html_safe
       end
-
       bool_row :published
+      unless [true, false].include?(post.published)
+        row 'Действия' do
+          text_node button_to 'Опубликовать', admin_post_path(post, post: { published: true }), method: :put
+          br
+          text_node button_to 'Отклонить', admin_post_path(post, post: { published: false }), method: :put
+        end
+      end
       row :user
       row :created_at
       row :updated_at
