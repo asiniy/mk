@@ -21,19 +21,9 @@ h4.comment_here {
       border-bottom: 1px dotted #0088CC;
     }
 
-    span.destroy_comment {
-      color: red;
-      background: #eee;
-      padding: 3px;
-      font-size: 20px;
-      border-radius: 3px;
+    .destroy_comment {
       float: right;
-      cursor: pointer;
-
-      &:hover {
-        background: white;
-        color: #c00;
-      }
+      display: inline-block;
     }
   }
 

@@ -11,7 +11,7 @@
           =' comment.author_name
       i сказал:
       - if admin_signed_in?
-        span.destroy_comment data-uri="#{comment_path(comment.id)}" ✖
+        = button_to '✖', comment_path(comment), class: 'btn btn-danger', method: :delete, form_class: 'destroy_comment', remote: true
     .comment_div = comment.content.html_safe
     p.comment_here data-parent_id="#{comment.id}"
       span Ответить

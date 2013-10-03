@@ -19,6 +19,7 @@ ActiveAdmin.register Post do
       row :body do |post|
         post.body.html_safe
       end
+
       bool_row :published
       row :user
       row :created_at

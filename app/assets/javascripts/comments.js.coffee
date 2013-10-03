@@ -50,10 +50,5 @@ $ ->
       $('#new_comment .errors').html($(data.errors))
 
 $ ->
-  $('.destroy_comment').click ->
-    commentDiv = $(this).closest('.comment')
-    $.ajax $(this).data('uri'),
-      type: 'DELETE',
-      success: (data, textStatus, jqXHR) ->
-        if data['success']
-          commentDiv.remove()
+  $('.destroy_comment').bind 'ajax:success', (e, data, status, xhr) ->
+    $(this).closest('.comment').remove()
